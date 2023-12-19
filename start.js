@@ -1,4 +1,5 @@
 import { settings } from "./startrSettings.js";
+import { startTimer } from "./timer.js";
 
 export class Start {
     constructor(panel, grid) {
@@ -31,6 +32,7 @@ export class Start {
 
     newGame() {
         this.panel.style.transform = 'scale(0)'
+        startTimer()
     }
 
     getSize(event) {

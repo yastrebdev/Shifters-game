@@ -1,3 +1,4 @@
+import { statistics } from "./statistics.js";
 import { Tile } from "./tile.js";
 
 export class Cell {
@@ -18,6 +19,7 @@ export class Cell {
 
   tileReversal() {
     if (this.tile.empty) return
+    statistics.setActions()
     this.tile.tileFront.style.transform = "perspective(600px) rotateY(-180deg)";
     this.tile.tileBack.style.transform = "perspective(600px) rotateY(0deg)";
     this.tile.open = true

@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="game-board"></div>
+    <div id="timer"></div>
     <div id="start-block" class="start overlay">
       <div class="start__menu menu">
         <h3>Давайте начнем</h3>
@@ -27,6 +28,8 @@
     <div id="finish-block" class="finish overlay">
       <div class="finish__menu menu">
           <h3>Конец игры</h3>
+          <div class="end-time statistics"><span>Ваше время:</span> <span id="end-time"></span></div>
+          <div class="actions statistics"><span>Количество действий:</span> <span id="actions"></span></div>
           <div id="finish-buttons" class="buttons"></div>
       </div>
     </div>

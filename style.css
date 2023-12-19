@@ -96,6 +96,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 99%;
+  position: relative;
 }
 
 #game-board {
@@ -224,4 +225,23 @@ body {
 
 .tab-size__active {
   background-color: #acacac;
+}
+
+
+
+#timer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  color: #fff;
+}
+
+.statistics {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #000;
 }

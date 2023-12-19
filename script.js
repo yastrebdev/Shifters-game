@@ -70,3 +70,5 @@ function searchNumberPairs() {
     const match = pairs[0] === pairs[1]
     return match
 }
+
+// finish.winGame()

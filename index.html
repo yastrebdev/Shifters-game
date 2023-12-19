@@ -10,6 +10,7 @@
   <body>
     <div id="game-board"></div>
     <div id="timer"></div>
+    <div id="actions"></div>
     <div id="start-block" class="start overlay">
       <div class="start__menu menu">
         <h3>Давайте начнем</h3>
@@ -22,6 +23,11 @@
             <div data-size="6" class="tab-size">6x6</div>
             <div data-size="8" class="tab-size">8x8</div>
           </div>
+          <div class="game-board__mode">
+            <div data-mode="free" class="tab-mode tab-mode__active">Свободный</div>
+            <div data-mode="normal" class="tab-mode">Обычный</div>
+            <div data-mode="hard" class="tab-mode">Сложный</div>
+          </div>
         </div>
       </div>
     </div>
@@ -29,7 +35,7 @@
       <div class="finish__menu menu">
           <h3>Конец игры</h3>
           <div class="end-time statistics"><span>Ваше время:</span> <span id="end-time"></span></div>
-          <div class="actions statistics"><span>Количество действий:</span> <span id="actions"></span></div>
+          <div class="actions statistics"><span>Количество действий:</span> <span id="actions-result"></span></div>
           <div id="finish-buttons" class="buttons"></div>
       </div>
     </div>

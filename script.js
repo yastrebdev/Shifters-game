@@ -1,6 +1,7 @@
 import { Start } from "./start.js";
 import { Grid } from "./grid.js";
 import { Finish } from "./finish.js";
+import { statistics } from "./statistics.js";
 
 const startBlock = document.getElementById('start-block')
 const gameBoard = document.getElementById('game-board');
@@ -21,6 +22,7 @@ let value = ''
 let count = grid.cells.length
 
 function handleClick(event) {
+    console.log(statistics.getActions())
     const valueCell = event.target.getAttribute('value')
     const targetCell = grid.cells.find(cell => cell.value === valueCell)
     if (!targetCell || pairs.length === 2) {
@@ -53,6 +55,10 @@ function handleClick(event) {
                 finish.winGame()
             }
         }, 1000)
+    }
+
+    if (statistics.getMode() !== 'free' && statistics.getActions() === 0) {
+        finish.gameOver()
     }
 
     setupClickOnce()

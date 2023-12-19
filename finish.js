@@ -6,12 +6,12 @@ export class Finish {
         const timerElement = document.getElementById('timer');
         const endTime = document.getElementById('end-time')
 
-        const actions = document.getElementById('actions')
+        const actionsResult = document.getElementById('actions-result')
 
         this.endTime = endTime
         this.timerElement = timerElement
 
-        this.actions = actions
+        this.actions = actionsResult
 
         const buttons = document.getElementById('finish-buttons');
         const newGameButton = document.createElement('button');
@@ -25,7 +25,14 @@ export class Finish {
 
     winGame() {
         this.endTime.textContent = this.timerElement.textContent
-        this.actions.textContent = statistics.getActions()
+        this.actions.textContent = statistics.getNumberOfActions() - statistics.getActions()
+        this.panel.style.transform = 'scale(1)'
+        stopTimer()
+    }
+
+    gameOver() {
+        this.endTime.textContent = this.timerElement.textContent
+        this.actions.textContent = statistics.getNumberOfActions()
         this.panel.style.transform = 'scale(1)'
         stopTimer()
     }

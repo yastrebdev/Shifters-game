@@ -2,11 +2,13 @@ import { statistics } from "./statistics.js";
 import { Tile } from "./tile.js";
 
 export class Cell {
-  constructor(gridElement, x, y, rundomNum) {
+  constructor(gridElement, x, y, rundomNum, actions) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     cell.setAttribute("value", `${x}${y}`);
     gridElement.append(cell);
+
+    this.actions = actions
 
     this.cell = cell
     this.x = x;
@@ -19,7 +21,12 @@ export class Cell {
 
   tileReversal() {
     if (this.tile.empty) return
-    statistics.setActions()
+    if (statistics.getMode() === 'free') {
+      statistics.setActions('up')
+    } else if (statistics.getMode() === 'normal' || 'hard') {
+      statistics.setActions('dawn')
+    }
+    this.actions.textContent = statistics.getActions()
     this.tile.tileFront.style.transform = "perspective(600px) rotateY(-180deg)";
     this.tile.tileBack.style.transform = "perspective(600px) rotateY(0deg)";
     this.tile.open = true

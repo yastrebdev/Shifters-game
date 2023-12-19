@@ -1,4 +1,5 @@
 import { settings } from "./startrSettings.js";
+import { statistics } from "./statistics.js";
 import { startTimer } from "./timer.js";
 
 export class Start {
@@ -8,16 +9,28 @@ export class Start {
             this.newGame()
         })
 
-        const tabs = document.querySelectorAll('.tab-size')
+        const tabsSize = document.querySelectorAll('.tab-size')
+        const tabsMode = document.querySelectorAll('.tab-mode')
 
-        tabs.forEach(tab => {
+        tabsSize.forEach(tab => {
             tab.addEventListener('click', (event) => {
-                tabs.forEach(t => t.classList.remove('tab-size__active'));
+                tabsSize.forEach(t => t.classList.remove('tab-size__active'));
 
                 tab.classList.add('tab-size__active');
 
                 this.getSize(event);
                 grid.chengeSize()
+            });
+        });
+
+        tabsMode.forEach(tab => {
+            tab.addEventListener('click', (event) => {
+                tabsMode.forEach(t => t.classList.remove('tab-mode__active'));
+
+                tab.classList.add('tab-mode__active');
+
+                this.getMode(event);
+                grid.changeMode(event)
             });
         });
 
@@ -37,5 +50,9 @@ export class Start {
 
     getSize(event) {
         settings.setSize(event ? Number(event.target.dataset.size) : 4)
+    }
+
+    getMode(event) {
+        settings.setMode(event ? event.target.dataset.mode : 'free')
     }
 }

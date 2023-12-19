@@ -1,8 +1,11 @@
 import { Cell } from "./cell.js";
 import { settings } from "./startrSettings.js";
+import { statistics } from "./statistics.js";
 
 export class Grid {
     constructor(gridElement) {
+        const actions = document.getElementById('actions');
+        this.actions = actions
         this.gridElement = gridElement
         this.cells = [];
         this.numPairs = [];
@@ -41,10 +44,30 @@ export class Grid {
         for (let i = 0; i < CELLS_COUNT; i++) {
             this.cells.push(
                 new Cell(this.gridElement, i % grid_size, Math.floor(i / grid_size), 
-                    this.randomPositionNums[i]
+                    this.randomPositionNums[i], actions
                 )
             );
         }
+    }
+
+    changeMode(event) {    
+        const mode = event.target.dataset.mode;
+        switch (mode) {
+            case 'free':
+                statistics.setNumberOfActions('')
+                break
+            case 'normal':
+                statistics.setNumberOfActions(settings.getSize() * settings.getSize() * 3)
+                statistics.countActions()
+                statistics.setMode(mode)
+                break
+            case 'hard':
+                statistics.setNumberOfActions(settings.getSize() * settings.getSize() * 2)
+                statistics.countActions()
+                statistics.setMode(mode)
+                break
+        }
+        this.actions.textContent = statistics.getNumberOfActions()
     }
 
     clearCells() {

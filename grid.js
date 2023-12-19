@@ -50,24 +50,25 @@ export class Grid {
         }
     }
 
-    changeMode(event) {    
-        const mode = event.target.dataset.mode;
+    changeMode(event, value) {    
+        const mode = event ? event.target.dataset.mode : value;
         switch (mode) {
             case 'free':
                 statistics.setNumberOfActions('')
                 break
             case 'normal':
-                statistics.setNumberOfActions(settings.getSize() * settings.getSize() * 3)
+                statistics.setNumberOfActions(this.cells.length * 3)
                 statistics.countActions()
                 statistics.setMode(mode)
                 break
             case 'hard':
-                statistics.setNumberOfActions(settings.getSize() * settings.getSize() * 2)
+                statistics.setNumberOfActions(this.cells.length * 2)
                 statistics.countActions()
                 statistics.setMode(mode)
                 break
         }
         this.actions.textContent = statistics.getNumberOfActions()
+        console.log(statistics.getNumberOfActions())
     }
 
     clearCells() {

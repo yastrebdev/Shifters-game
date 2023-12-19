@@ -20,6 +20,13 @@ export class Start {
 
                 this.getSize(event);
                 grid.chengeSize()
+
+                if (statistics.getMode() === 'normal') {
+                    grid.changeMode(undefined, 'normal');
+                }
+                if (statistics.getMode() === 'hard') {
+                    grid.changeMode(undefined, 'hard');
+                }
             });
         });
 

@@ -41,8 +41,8 @@ function handleClick(event) {
             openCells.forEach(cell => {
                 cell.tileClose()
             })
-            pairs = []
         }, 1000)
+        pairs = []
     }
 
     if (matchPairs) {

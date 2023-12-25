@@ -10,7 +10,13 @@
   </head>
   <body>
     <div id="game-board"></div>
-    <div id="timer"></div>
+    <div id="timer">
+      <div id="hours" class="timer__item"></div>
+      <div>:</div>
+      <div id="minutes" class="timer__item"></div>
+      <div>:</div>
+      <div id="seconds" class="timer__item"></div>
+    </div>
     <div id="actions"></div>
     <div id="start-block" class="start overlay">
       <div class="start__menu menu">
@@ -32,9 +38,12 @@
         </div>
       </div>
     </div>
+    <!-- <div>
+      <button id="restart">Переиграть</button>
+    </div> -->
     <div id="finish-block" class="finish overlay">
       <div class="finish__menu menu">
-          <h3>Конец игры</h3>
+          <h3 id="finish-title"></h3>
           <div class="end-time statistics"><span>Ваше время:</span> <span id="end-time"></span></div>
           <div class="actions statistics"><span>Количество действий:</span> <span id="actions-result"></span></div>
           <div id="finish-buttons" class="buttons"></div>

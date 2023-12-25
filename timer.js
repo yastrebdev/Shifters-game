@@ -2,7 +2,9 @@ let timerInterval;
 let timerValue = 0;
 
 export function startTimer() {
-    const timerElement = document.getElementById('timer');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
 
     // Очищаем предыдущий интервал перед стартом нового
     stopTimer();
@@ -12,9 +14,10 @@ export function startTimer() {
         const minutes = Math.floor((timerValue % 3600) / 60);
         const seconds = timerValue % 60;
 
-        const formattedTime = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
-
-        timerElement.textContent = formattedTime;
+        // Обновляем содержимое каждого элемента
+        hoursElement.textContent = pad(hours);
+        minutesElement.textContent = pad(minutes);
+        secondsElement.textContent = pad(seconds);
 
         timerValue++;
     }, 1000);

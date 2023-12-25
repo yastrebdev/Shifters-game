@@ -86,12 +86,33 @@ input, select {
 
 /* --- */
 
+@font-face {
+  font-family: 'NorbertSchmal-Fett';
+  src: url('./fonts/NorbertSchmal-Fett.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'NorbertBreit-Normal';
+  src: url('./fonts/NorbertBreit-Normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'ValueSansPro-Medium';
+  src: url('./fonts/ValueSansPro-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+
 html {
   height: 100%;
 }
 
 body {
-  background-color: #333;
+  background-color: #161515;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +134,7 @@ body {
 }
 
 .cell {
-  background-color: #444;
+  background-color: #333131;
   border-radius: 1vmin;
   cursor: pointer;
 }
@@ -128,17 +149,17 @@ body {
   width: var(--cell-size);
   height: var(--cell-size);
   border-radius: 1vmin;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 3.5vmin;
+  font-family: NorbertSchmal-Fett, Helvetica, sans-serif;
+  font-size: 4vmin;
   font-weight: bold;
   transition: all 0.4s linear;
-  color: #000;
+  color: #161515;
   backface-visibility: hidden;
   pointer-events: none;
 }
 
 .tile__front {
-  background-color: yellow;
+  background-color: #feeb53;
   transform: perspective(600px) rotateY(0deg);
 }
 
@@ -164,7 +185,7 @@ body {
 }
 
 .menu {
-  width: 30vmin;
+  width: 40vmin;
   background-color: #fff;
   padding: 32px;
   border-radius: 10px;
@@ -172,7 +193,11 @@ body {
 
 .menu > h3 {
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 2.5vmin;
+  font-weight: bold;
+  color: #2e323a;
 }
 
 .start {
@@ -188,11 +213,15 @@ body {
 
 .buttons button {
   width: 100%;
-  padding: 8px 16px;
+  padding: 16px 16px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #000;
+  background-color: #161515;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 1.5vmin;
+  font-weight: bold;
+  letter-spacing: 3px;
   color: #fff;
 }
 
@@ -203,29 +232,42 @@ body {
 .settings {
   padding: 8px;
   border-radius: 8px;
-  background-color: #e8e8e8;
+  background-color: #d7dbdf;
 }
 
 .game-board__size {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .tab-size {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: 12px 8px;
   border-radius: 4px;
-  border: 1px solid #acacac;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 1vmin;
+  font-weight: bold;
+  color: #575652;
+  letter-spacing: 3px;
+}
+
+.tab-size:hover {
+  background-color: #c6cbd0;
 }
 
 .tab-size__active {
-  background-color: #acacac;
+  background-color: #2e323a;
+  color: #fff;
+}
+
+.tab-size__active:hover {
+  background-color: #2e323a;
 }
 
 .game-board__mode {
@@ -238,33 +280,63 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: 12px 8px;
   border-radius: 4px;
-  border: 1px solid #acacac;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 1vmin;
+  font-weight: bold;
+  color: #575652;
+  letter-spacing: 3px;
+}
+
+.tab-mode:hover {
+  background-color: #c6cbd0;
 }
 
 .tab-mode__active {
-  background-color: #acacac;
+  background-color: #2e323a;
+  color: #fff;
+}
+
+.tab-mode__active:hover {
+  background-color: #2e323a;
 }
 
 
 #timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 100px;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 2vmin;
+  font-weight: bold;
   color: #fff;
+}
+
+.timer__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6vmin;
 }
 
 .statistics {
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  padding: 16px 16px;
   border-radius: 4px;
-  border: 1px solid #000;
+  border: 1px solid #161515;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 1vmin;
+  font-weight: bold;
+  letter-spacing: 2.5px;
 }
 
 
@@ -273,5 +345,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   bottom: 100px;
+  font-family: NorbertBreit-Normal, Helvetica, sans-serif;
+  font-size: 2vmin;
+  font-weight: bold;
   color: #fff;
 }

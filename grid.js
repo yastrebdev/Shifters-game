@@ -48,6 +48,8 @@ export class Grid {
                 )
             );
         }
+
+        settings.setCount(this.cells.length)
     }
 
     changeMode(event, value) {    

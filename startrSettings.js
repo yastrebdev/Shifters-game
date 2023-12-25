@@ -1,5 +1,6 @@
 export const settings = {
     _size: 4,
+    _count: 16,
     _mode: 'Свободный',
 
     getSize() {
@@ -7,6 +8,16 @@ export const settings = {
     },
     setSize(number) {
         this._size = number
+    },
+    
+    getCount() {
+        return this._count
+    },
+    setCount(number) {
+        this._count = number
+    },
+    downCount() {
+        this._count = this._count - 2
     },
 
     getMode() {

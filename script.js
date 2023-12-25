@@ -2,6 +2,7 @@ import { Start } from "./start.js";
 import { Grid } from "./grid.js";
 import { Finish } from "./finish.js";
 import { statistics } from "./statistics.js";
+import { settings } from "./startrSettings.js";
 
 const startBlock = document.getElementById('start-block')
 const gameBoard = document.getElementById('game-board');
@@ -19,7 +20,6 @@ function setupClickOnce() {
 
 let pairs = []
 let value = ''
-let count = grid.cells.length
 
 function handleClick(event) {
     const valueCell = event.target.getAttribute('value')
@@ -38,30 +38,30 @@ function handleClick(event) {
 
     if (matchPairs === false) {
         setTimeout(() => {
+            pairs = []
             openCells.forEach(cell => {
                 cell.tileClose()
             })
         }, 1000)
-        pairs = []
     }
 
     if (matchPairs) {
         setTimeout(() => {
-            openCells.forEach(cell => cell.removeTile())
-            count = count - 2
             pairs = []
-            if (count === 0) {
+            openCells.forEach(cell => cell.removeTile())
+            settings.downCount()
+            if (settings.getCount() === 0) {
                 finish.winGame()
             }
         }, 1000)
     }
-
+    
     if (statistics.getMode() !== 'free' && statistics.getActions() === 0) {
         finish.gameOver()
     }
-
+    
     setupClickOnce()
-
+    
     console.log('Массив пар:', pairs[0], pairs[1])
 }
 
@@ -77,5 +77,3 @@ function searchNumberPairs() {
     const match = pairs[0] === pairs[1]
     return match
 }
-
-// finish.winGame()

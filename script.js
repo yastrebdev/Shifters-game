@@ -22,7 +22,6 @@ let value = ''
 let count = grid.cells.length
 
 function handleClick(event) {
-    console.log(statistics.getActions())
     const valueCell = event.target.getAttribute('value')
     const targetCell = grid.cells.find(cell => cell.value === valueCell)
     if (!targetCell || pairs.length === 2) {
@@ -41,8 +40,8 @@ function handleClick(event) {
         setTimeout(() => {
             openCells.forEach(cell => {
                 cell.tileClose()
-                pairs = []
             })
+            pairs = []
         }, 1000)
     }
 
@@ -62,6 +61,8 @@ function handleClick(event) {
     }
 
     setupClickOnce()
+
+    console.log('Массив пар:', pairs[0], pairs[1])
 }
 
 function createPairs(cell) {

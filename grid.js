@@ -68,7 +68,6 @@ export class Grid {
                 break
         }
         this.actions.textContent = statistics.getNumberOfActions()
-        console.log(statistics.getNumberOfActions())
     }
 
     clearCells() {

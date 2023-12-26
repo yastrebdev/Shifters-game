@@ -11,6 +11,7 @@ const finishBlock = document.getElementById('finish-block')
 const grid = new Grid(gameBoard)
 const start = new Start(startBlock, grid)
 const finish = new Finish(finishBlock)
+start.logMovies()
 setupClickOnce()
 grid.chengeSize()
 

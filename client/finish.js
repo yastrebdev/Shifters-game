@@ -28,12 +28,36 @@ export class Finish {
         this.panel = panel
     }
 
+    async sendResult() {
+        const userId = document.cookie.replace('userId').split('=')[1]
+        console.log(userId)
+        const data = {
+            user_id: userId,
+            mode: settings.getMode(),
+            time: new Date(this.endTime.textContent),
+            moves: settings.getMode() === "Свободный" ? statistics.getActions() : statistics.getNumberOfActions() - statistics.getActions()
+        }
+        try {
+            await fetch('http://127.0.0.1:3000/stats', {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+                credentials: 'include'
+            });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
     winGame() {
         this.title.textContent = "Вы победили"
         this.endTime.textContent = this.timerElement.textContent
         this.actions.textContent = settings.getMode() === "Свободный" ? statistics.getActions() : statistics.getNumberOfActions() - statistics.getActions()
         this.panel.style.transform = 'scale(1)'
         stopTimer()
+        this.sendResult()
     }
 
     gameOver() {
@@ -42,6 +66,7 @@ export class Finish {
         this.actions.textContent = statistics.getNumberOfActions()
         this.panel.style.transform = 'scale(1)'
         stopTimer()
+        this.sendResult()
     }
 
     newGame() {

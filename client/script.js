@@ -11,6 +11,7 @@ const finishBlock = document.getElementById('finish-block')
 const grid = new Grid(gameBoard)
 const start = new Start(startBlock, grid)
 const finish = new Finish(finishBlock)
+start.logMovies()
 setupClickOnce()
 grid.chengeSize()
 
@@ -59,10 +60,8 @@ function handleClick(event) {
     if (statistics.getMode() !== 'free' && statistics.getActions() === 0) {
         finish.gameOver()
     }
-    
+
     setupClickOnce()
-    
-    console.log('Массив пар:', pairs[0], pairs[1])
 }
 
 function createPairs(cell) {

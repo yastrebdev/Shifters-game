@@ -2,12 +2,32 @@ import { settings } from "./startrSettings.js";
 import { statistics } from "./statistics.js";
 import { startTimer } from "./timer.js";
 
+// async function logMovies() {
+//     try {
+//         const headers = new Headers({
+//             'Content-Type': 'application/json'
+//         });
+
+//         const response = await fetch('http://127.0.0.1:3000/');
+//         const data = await response.json();
+//         console.log(data)
+//         return data.name
+
+//     } catch (error) {
+//         console.error('Error:', error);
+//     }
+// }
+
+// logMovies()
+
 export class Start {
     constructor(panel, grid) {
         const startGameButton = document.getElementById('start-game-button');
         startGameButton.addEventListener('click', () => {
             this.newGame()
         })
+
+        this.title = document.getElementById('start-title')
 
         const tabsSize = document.querySelectorAll('.tab-size')
         const tabsMode = document.querySelectorAll('.tab-mode')
@@ -48,6 +68,21 @@ export class Start {
         }
         
         this.panel = panel
+    }
+
+    async logMovies() {
+        try {
+            const response = await fetch('http://127.0.0.1:3000', {credentials: 'include'});
+            const data = await response.json();
+            console.log(data)
+            this.updateTitle(data.name);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    updateTitle(name) {
+        this.title.textContent += ` ${name}`;
     }
 
     newGame() {

@@ -60,10 +60,8 @@ function handleClick(event) {
     if (statistics.getMode() !== 'free' && statistics.getActions() === 0) {
         finish.gameOver()
     }
-    
+
     setupClickOnce()
-    
-    console.log('Массив пар:', pairs[0], pairs[1])
 }
 
 function createPairs(cell) {

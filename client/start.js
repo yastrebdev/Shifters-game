@@ -72,23 +72,17 @@ export class Start {
 
     async logMovies() {
         try {
-            const headers = new Headers({
-                'Content-Type': 'application/json'
-            });
-
-            const response = await fetch('http://127.0.0.1:3000/');
+            const response = await fetch('http://127.0.0.1:3000', {credentials: 'include'});
             const data = await response.json();
-            console.log(data);
-
+            console.log(data)
             this.updateTitle(data.name);
-
         } catch (error) {
             console.error('Error:', error);
         }
     }
 
     updateTitle(name) {
-        this.title.textContent += name;
+        this.title.textContent += ` ${name}`;
     }
 
     newGame() {
